@@ -1,10 +1,10 @@
 package vehicle;
 
 public interface Repairable {
-    static final int CAR = 500;
-    static final int MOTO = 30;
-    static final int TRUCK = 400;
-    static final int BIKE = 50;
+    int CAR = 500;
+    int MOTO = 30;
+    int TRUCK = 400;
+    int BIKE = 50;
 
     boolean repair();
 }
