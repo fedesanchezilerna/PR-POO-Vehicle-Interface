@@ -34,7 +34,7 @@ public abstract class Vehicle {
     }
 
     public void setMoney(int money) {
-        this.money = money;
+        this.money += money;
     }
 
     public boolean isAvailable() {
@@ -47,11 +47,10 @@ public abstract class Vehicle {
 
     @Override
     public String toString() {
-        return "Vehicle{" +
-               "posX=" + posX +
-               ", posY=" + posY +
-               ", money=" + money +
+        return "pos[" + posX +
+               ", " + posY +
+               "], $=" + money +
                ", available=" + available +
-               '}';
+               ']';
     }
 }

@@ -13,13 +13,13 @@ public class Car extends Vehicle implements Movable, Refillable, Repairable {
     public boolean move(char pos) {
         if (!available || petrol < Movable.CAR_CONSUM) return false;
 
-        if (Character.toLowerCase(pos) == 'x') {
+        if (pos == 'x') {
             posX += Movable.CAR;
-        } else if (Character.toLowerCase(pos) == 'y') {
+        } else if (pos == 'y') {
             posY += Movable.CAR;
         }
         petrol -= Movable.CAR_CONSUM;
-        return false;
+        return true;
     }
 
     @Override
@@ -37,6 +37,7 @@ public class Car extends Vehicle implements Movable, Refillable, Repairable {
 
         int toFill = Refillable.CAR - petrol;
         money -= toFill * PRICE;
+        petrol = Refillable.CAR;
         return true;
     }
 
@@ -46,5 +47,11 @@ public class Car extends Vehicle implements Movable, Refillable, Repairable {
         money -= Repairable.CAR;
         available = true;
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Car: petrol=" + petrol + ", "
+               + super.toString();
     }
 }
