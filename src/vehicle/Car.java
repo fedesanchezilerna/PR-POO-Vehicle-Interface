@@ -1,4 +1,43 @@
 package vehicle;
 
-public class Car {
+public class Car extends Vehicle implements Movable, Refillable, Repairable {
+    private int petrol;
+
+    public Car(int posX, int posY, int money, boolean available, int petrol) {
+        super(posX, posY, money, available);
+        this.petrol = petrol;
+    }
+
+
+    @Override
+    public boolean move(char pos) {
+        if (!available || petrol < Movable.CAR_CONSUM) return false;
+
+        if (Character.toLowerCase(pos) == 'x') {
+            posX += Movable.CAR;
+        } else if (Character.toLowerCase(pos) == 'y') {
+            posY += Movable.CAR;
+        }
+        petrol -= Movable.CAR_CONSUM;
+        return false;
+    }
+
+    @Override
+    public boolean collision() {
+        if (available) {
+            available = false;
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean refill() {
+        return false;
+    }
+
+    @Override
+    public boolean repair() {
+        return false;
+    }
 }
