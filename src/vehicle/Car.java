@@ -33,11 +33,18 @@ public class Car extends Vehicle implements Movable, Refillable, Repairable {
 
     @Override
     public boolean refill() {
-        return false;
+        if (!available || money < Refillable.CAR || petrol == Refillable.CAR) return false;
+
+        int toFill = Refillable.CAR - petrol;
+        money -= toFill * PRICE;
+        return true;
     }
 
     @Override
     public boolean repair() {
-        return false;
+        if (available || money < Repairable.CAR) return false;
+        money -= Repairable.CAR;
+        available = true;
+        return true;
     }
 }
