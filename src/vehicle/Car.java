@@ -23,15 +23,6 @@ public class Car extends Vehicle implements Movable, Refillable, Repairable {
     }
 
     @Override
-    public boolean collision() {
-        if (available) {
-            available = false;
-            return true;
-        }
-        return false;
-    }
-
-    @Override
     public boolean refill() {
         if (!available || money < Refillable.CAR || petrol == Refillable.CAR) return false;
 

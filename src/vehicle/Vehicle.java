@@ -1,6 +1,6 @@
 package vehicle;
 
-public abstract class Vehicle {
+public abstract class Vehicle implements Movable {
     protected int posX;
     protected int posY;
     protected int money;
@@ -43,6 +43,15 @@ public abstract class Vehicle {
 
     public void setAvailable(boolean available) {
         this.available = available;
+    }
+
+    @Override
+    public boolean collision() {
+        if (available) {
+            available = false;
+            return true;
+        }
+        return false;
     }
 
     @Override

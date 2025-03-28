@@ -18,15 +18,6 @@ public class Bike extends Vehicle implements Movable, Repairable{
     }
 
     @Override
-    public boolean collision() {
-        if (available) {
-            available = false;
-            return true;
-        }
-        return false;
-    }
-
-    @Override
     public boolean repair() {
         if (available || money < Repairable.BIKE) return false;
         money -= Repairable.BIKE;
